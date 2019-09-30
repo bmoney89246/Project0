@@ -11,16 +11,18 @@ public class TheSystem {
 
 		// Login or Register
 		if (LoginOrRegister() == true) {
-			if (Login.tryLogin() == false) {
+			while (Login.tryLogin() == false) {
 				LoginOrRegister();
 			}
 		} else {
 
 			// register, if fails, user already exists and ask to login or register again
-			if (Register.Registration() == false) {
+			while (Register.Registration() == false) {
 				LoginOrRegister();
 			}
-			Login.tryLogin();
+			while(Login.tryLogin() == false) {
+				LoginOrRegister();
+			}
 		}
 
 		if (CustomerOrEmployee() == true) {

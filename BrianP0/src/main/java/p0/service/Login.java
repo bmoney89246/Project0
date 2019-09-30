@@ -20,6 +20,10 @@ public class Login {
 		username = TheSystem.in.nextLine();
 		String fileName = ".//src//main/resources//accounts//" + username + ".dat";
 		File fileCheck = new File(".//src//main/resources//accounts//" + username + ".dat");
+		if (!fileCheck.exists()) {
+			System.out.println("User does not exist");
+			return false;
+		}
 		try {
 			// Reading the object from a file
 			FileInputStream file = new FileInputStream(fileName);
