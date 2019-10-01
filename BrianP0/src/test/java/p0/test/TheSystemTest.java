@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,10 +23,11 @@ import p0.service.Register;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TheSystemTest {
-
-	@Mock
-	TheSystem sys = mock(TheSystem.class);
-	Register reg = mock(Register.class);
+	//TheSystem sys;
+//@Mock
+//TheSystem sys;
+//	Register reg = mock(Register.class);
+InputStream in;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -34,8 +39,8 @@ public class TheSystemTest {
 
 	@Before
 	public void setUp() throws Exception {
-		sys = new TheSystem();
-		reg = new Register();
+//sys = new TheSystem();
+//		reg = new Register();
 	}
 
 	@After
@@ -43,15 +48,14 @@ public class TheSystemTest {
 	}
 
 	@Test
-	public void TheSystemTest() {
-		//type 1
-		assertTrue(sys.LoginOrRegister());
-		//type 2
-		assertFalse(sys.LoginOrRegister());
-		//type 2
-		assertTrue(sys.CustomerOrEmployee());
-		//type 1
-		assertFalse(sys.CustomerOrEmployee());
+	public void TheSystemT() {
+	    String input = "1";
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
+	    assertTrue(TheSystem.LoginOrRegister());
+//	    input = "2";
+//	    System.setIn(in);
+//	    assertFalse(TheSystem.LoginOrRegister());
 	}
 	
 	@Test

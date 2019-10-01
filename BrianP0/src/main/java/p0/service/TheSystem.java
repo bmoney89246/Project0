@@ -5,8 +5,15 @@ import java.util.Scanner;
 public class TheSystem {
 
 	static Scanner in = new Scanner(System.in);
+
+	public static void SetScanner(Scanner in) {
+		TheSystem.in = in;
+	}
+
 	static String result = "";
+
 	public static void main(String args[]) {
+
 		// Login or Register
 		if (LoginOrRegister() == true) {
 			while (Login.tryLogin() == false) {
@@ -14,11 +21,11 @@ public class TheSystem {
 			}
 		} else {
 
-			// register, if fails, user already exists and ask to login or register again
+			// register, if fails, ask to login or register again
 			while (Register.Registration() == false) {
 				LoginOrRegister();
 			}
-			while(Login.tryLogin() == false) {
+			while (Login.tryLogin() == false) {
 				LoginOrRegister();
 			}
 		}
@@ -48,10 +55,8 @@ public class TheSystem {
 			return false;
 		} else {
 			System.out.println("Invalid input. Please try again.");
-			LoginOrRegister();
+			return false;
 		}
-		// Should never be reached
-		return true;
 	}
 
 	public static boolean CustomerOrEmployee() {
