@@ -6,9 +6,7 @@ public class TheSystem {
 
 	static Scanner in = new Scanner(System.in);
 	static String result = "";
-
 	public static void main(String args[]) {
-
 		// Login or Register
 		if (LoginOrRegister() == true) {
 			while (Login.tryLogin() == false) {
@@ -27,14 +25,16 @@ public class TheSystem {
 
 		if (CustomerOrEmployee() == true) {
 			// employee
-			while (true) {
+			while (Employee.employeeMenu()) {
 				Employee.employeeMenu();
 			}
+			System.out.println("Exiting system");
 		} else {
 			// customer
-			while (true) {
+			while (Customer.customerMenu()) {
 				Customer.customerMenu();
 			}
+			System.out.println("Exiting system");
 		}
 
 	}

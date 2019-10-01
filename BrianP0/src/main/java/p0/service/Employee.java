@@ -15,7 +15,7 @@ import p0.pojos.Car;
 public class Employee {
 	private static Logger log = Logger.getRootLogger();
 	public static boolean employeeMenu() {
-		System.out.println("1: Add Car\n2: Remove Car\n3: Accept Offer\n4: View All Payments");
+		System.out.println("1: Add Car\n2: Remove Car\n3: Accept Offer\n4: View All Payments\n5: Exit");
 		TheSystem.result = TheSystem.in.nextLine();
 		if("1".equals(TheSystem.result)) {
 			addCar();
@@ -25,6 +25,10 @@ public class Employee {
 			acceptOffer();
 		} else if("4".equals(TheSystem.result)){
 			viewPayments();
+		} else if("5".equals(TheSystem.result)){
+			return false;
+		} else {
+			System.out.println("Invalid command");
 		}
 		return true;	
 	}
@@ -123,6 +127,7 @@ public class Employee {
 				}
 			}
 		}
+		System.out.println("Offer accepted");
 		return true;
 	}
 	
@@ -136,15 +141,19 @@ public class Employee {
 		try {
 		FileInputStream file = new FileInputStream(dest);
 		ObjectInputStream in = new ObjectInputStream(file);
-		//String carDetails = (String) in.readObject();
 		payment = (double) in.readObject();
 		in.close();
 		} catch(Exception e) {
 			log.error(e);
 			System.out.println("Error reading payment");
 		}
-		System.out.println("How many years for the payment?");
-		System.out.println("For a 2 year period, the current payment is $" + payment/24 + " per month");
+		int years = Integer.parseInt(TheSystem.in.nextLine());
+		try {
+			System.out.println("For a " + years + " year period, the current payment is $" + payment / (years*12) + " per month");
+		} catch (Exception e) {
+			System.out.println("Error calculating payment");
+			return false;
+		}
 		return true;
 		
 	}

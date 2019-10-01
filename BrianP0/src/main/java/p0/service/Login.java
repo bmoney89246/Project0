@@ -49,6 +49,7 @@ public class Login {
 			log.error(e);
 			System.out.println("login error");
 		}	
+		List<String> myList = new ArrayList<>();
 		return true;
 	}
 }

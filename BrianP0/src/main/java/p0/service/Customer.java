@@ -14,8 +14,9 @@ import p0.pojos.Car;
 
 public class Customer {
 	private static Logger log = Logger.getRootLogger();
+
 	public static boolean customerMenu() {
-		System.out.println("1: View Owned Cars\n2: View Remaining payments\n3: View Car Lot\n4: Make Offer");
+		System.out.println("1: View Owned Cars\n2: View Remaining payments\n3: View Car Lot\n4: Make Offer\n5: Exit");
 		TheSystem.result = TheSystem.in.nextLine();
 		if ("1".equals(TheSystem.result)) {
 			viewOwnedCars();
@@ -25,6 +26,10 @@ public class Customer {
 			viewLot();
 		} else if ("4".equals(TheSystem.result)) {
 			makeOffer();
+		} else if ("5".equals(TheSystem.result)) {
+			return false;
+		} else {
+			System.out.println("Invalid command");
 		}
 		return true;
 	}
@@ -63,7 +68,7 @@ public class Customer {
 				return false;
 			}
 		}
-
+		System.out.println("Offer successfully made");
 		return true;
 	}
 
@@ -99,7 +104,7 @@ public class Customer {
 		if (directoryListing != null) {
 			for (File child : directoryListing) {
 				if (child.getName().contains(Login.username)) {
-					String vinNum = child.getName().replaceAll("-"+Login.username, "");
+					String vinNum = child.getName().replaceAll("-" + Login.username, "");
 					File dir2 = new File(".//src//main/resources//cars//" + vinNum);
 					try {
 						FileInputStream file = new FileInputStream(dir2);
@@ -123,23 +128,32 @@ public class Customer {
 	}
 
 	public static boolean viewRemPayments() {
-		double payment =0;
+		double payment = 0;
 		System.out.println("Vin number:");
 		String vinNum = TheSystem.in.nextLine();
 		TheSystem.result = vinNum + "-" + Login.username;
-		File dest = new File(".//src//main/resources//accpeted_offers//" +TheSystem.result + ".dat");
+		File dest = new File(".//src//main/resources//accpeted_offers//" + TheSystem.result + ".dat");
+		if (!dest.exists()) {
+			System.out.println("Incorrect Vin Number or car does not exist");
+			return false;
+		}
 		try {
-		FileInputStream file = new FileInputStream(dest);
-		ObjectInputStream in = new ObjectInputStream(file);
-		//String carDetails = (String) in.readObject();
-		payment = (double) in.readObject();
-		in.close();
-		} catch(Exception e) {
+			FileInputStream file = new FileInputStream(dest);
+			ObjectInputStream in = new ObjectInputStream(file);
+			payment = (double) in.readObject();
+			in.close();
+		} catch (Exception e) {
 			log.error(e);
 			System.out.println("Error reading payment");
 		}
 		System.out.println("How many years for the payment?");
-		System.out.println("For a 2 year period, the current payment is $" + payment/24 + " per month");
+		int years = Integer.parseInt(TheSystem.in.nextLine());
+		try {
+			System.out.println("For a " + years + " year period, the current payment is $" + payment / (years*12) + " per month");
+		} catch (Exception e) {
+			System.out.println("Error calculating payment");
+			return false;
+		}
 		return true;
 	}
 }
