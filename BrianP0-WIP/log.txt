@@ -1,0 +1,2 @@
+2019-09-30 14:29:14 ERROR root:45 - java.io.FileNotFoundException: .\src\main\resources\accounts\bmoneyu.dat (The system cannot find the file specified)
+2019-09-30 19:08:07 ERROR root:138 - java.io.FileNotFoundException: .\src\main\resources\accpeted_offers\asdf-bmoney.dat (The system cannot find the file specified)
