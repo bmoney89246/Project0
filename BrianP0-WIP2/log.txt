@@ -1,0 +1,10 @@
+2019-09-30 14:29:14 ERROR root:45 - java.io.FileNotFoundException: .\src\main\resources\accounts\bmoneyu.dat (The system cannot find the file specified)
+2019-09-30 19:08:07 ERROR root:138 - java.io.FileNotFoundException: .\src\main\resources\accpeted_offers\asdf-bmoney.dat (The system cannot find the file specified)
+2019-10-02 19:37:08 ERROR root:38 - java.io.FileNotFoundException: .\src\main\resources\accounts\mwxdydkchvh1.dat (The system cannot find the file specified)
+2019-10-02 19:37:57 ERROR root:38 - java.io.FileNotFoundException: .\src\main\resources\accounts\mwxdydkchvh1.dat (The system cannot find the file specified)
+2019-10-03 20:21:03 ERROR root:40 - java.io.FileNotFoundException: .\src\main\resources\accpeted_offers\.dat (The system cannot find the file specified)
+2019-10-03 20:49:12 ERROR root:75 - java.nio.file.NoSuchFileException: .\src\main\resources\offers\car1-bmoney.dat -> .\src\main\resources\accepted_offers\car1-.dat
+2019-10-03 20:52:30 ERROR root:39 - java.io.FileNotFoundException: .\src\main\resources\accpeted_offers\bmoney.dat (The system cannot find the file specified)
+2019-10-03 21:00:15 ERROR root:75 - java.nio.file.NoSuchFileException: .\src\main\resources\offers\car1-bmoney.dat -> .\src\main\resources\accepted_offers\car1-bmoney.dat
+2019-10-03 21:04:36 ERROR root:75 - java.nio.file.NoSuchFileException: .\src\main\resources\offers\car1-bmoney.dat -> .\src\main\resources\accepted_offers\car1-bmoney.dat
+2019-10-03 21:14:37 ERROR root:75 - java.nio.file.NoSuchFileException: .\src\main\resources\offers\car1-bmoney.dat -> .\src\main\resources\accepted_offers\car1-bmoney.dat
