@@ -20,7 +20,7 @@ public class TheSystem {
 					break;
 				}
 			} else if ("2".equals(user.getLoginOrRegisterChoice())) {
-				Register.Registration(user, input, dao, fileInfo);
+				Register.Registration(user, input, dao);
 			} else {
 				System.out.println("Invalid input. Please try again");
 			}

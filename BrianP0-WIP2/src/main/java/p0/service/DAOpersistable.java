@@ -5,7 +5,7 @@ import java.io.File;
 
 public interface DAOpersistable {
 
-	public  boolean writeToFile(File file, String writeString);
+	public  boolean loginDao(File file);
 
 	public String readFromFile(File file);
 

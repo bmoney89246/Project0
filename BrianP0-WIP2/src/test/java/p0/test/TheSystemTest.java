@@ -1,12 +1,11 @@
 package p0.test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
+import java.io.File;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,19 +15,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import p0.pojos.FileInfo;
+import p0.pojos.Input;
 import p0.pojos.User;
-import p0.service.Login;
+import p0.service.DAO;
 import p0.service.TheSystem;
-import p0.service.Register;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TheSystemTest {
-	//TheSystem sys;
-//@Mock
-//TheSystem sys;
-//	Register reg = mock(Register.class);
-InputStream in;
 
+	@Mock
+	Input input;
+	@Mock
+	User user;
+	@Mock
+	DAO dao;
+	@Mock
+	FileInfo fileInfo;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -39,8 +44,7 @@ InputStream in;
 
 	@Before
 	public void setUp() throws Exception {
-//sys = new TheSystem();
-//		reg = new Register();
+
 	}
 
 	@After
@@ -48,26 +52,55 @@ InputStream in;
 	}
 
 	@Test
-	public void TheSystemT() {
-	    String input = "1";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
-//	    assertTrue(TheSystem.LoginOrRegister());
-//	    input = "2";
-//	    System.setIn(in);
-//	    assertFalse(TheSystem.LoginOrRegister());
+	public void LoginOrRegisterTest() {
+		user = new User();
+		when(input.getUserInput()).thenReturn("1");
+		TheSystem.LoginOrRegister(user, input);
+	    assertEquals("1", user.getLoginOrRegisterChoice());
+		when(input.getUserInput()).thenReturn("2");
+		TheSystem.LoginOrRegister(user, input);
+	    assertEquals("2", user.getLoginOrRegisterChoice());
+	}
+
+	@Test
+	public void CustomerOrEmployeeTest() {
+		user = new User();
+		when(input.getUserInput()).thenReturn("1");
+		TheSystem.CustomerOrEmployee(user, input);
+	    assertEquals("1", user.getCustomerOrEmployeeChoice());
+		when(input.getUserInput()).thenReturn("2");
+		TheSystem.LoginOrRegister(user, input);
+	    assertEquals("2", user.getCustomerOrEmployeeChoice());
 	}
 	
 	@Test
-	public void Register() {
-		//type bmoney
-		//assertFalse(reg.Registration());
-		
-		//type asdfg, asdfg
-		//assertTrue(reg.Registration());
-		
-		//type bmoney
-		//assertEquals("bmoney", reg.setUsername(),"bmoney");
+	public void RegisterTest() {
+		//user = new User();
+		dao = new DAO();
+		FileInfo fileInfo = new FileInfo();
+		when(input.getUserInput()).thenReturn("bmoney");
+		File file = new File(".//src//main//resources//accounts//" + input.getUserInput() + ".dat");
+		when(fileInfo.getFile()).thenReturn(null);
+		assertTrue(dao.fileExists(file));
+		file = new File(".//src//main//resources//accounts//" + input.getUserInput() + ".dat");
+		when(input.getUserInput()).thenReturn("asd123");
+		assertFalse(dao.fileExists(file));
 	}
+	@Test
+	public void LoginTest() {
+		//user = new User();
+		dao = new DAO();
+		FileInfo fileInfo = new FileInfo();
+		when(input.getUserInput()).thenReturn("mwxdydkchvh1");
+		File file = new File(".//src//main//resources//accounts//" + input.getUserInput() + ".dat");
+		when(fileInfo.getFile()).thenReturn(null);
+		assertTrue(dao.fileExists(file));
+		file = new File(".//src//main//resources//accounts//" + input.getUserInput() + ".dat");
+		when(input.getUserInput()).thenReturn("asd123");
+		assertFalse(dao.fileExists(file));
+	}
+	
+	
+	
 
 }

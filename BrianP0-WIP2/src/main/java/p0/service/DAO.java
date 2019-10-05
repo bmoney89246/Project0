@@ -6,24 +6,44 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
+import p0.pojos.User;
+import p0.util.ConnectionFactory;
+
 public class DAO implements DAOpersistable {
+	private Connection conn = ConnectionFactory.getConnection();
+	
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
 	private  Logger log = Logger.getRootLogger();
 
-	public  boolean writeToFile(File file, String writeString) {
+	public  boolean loginDao(User user) {
+		String sql = "insert into logincredentials (username, password) values ('"+ user.getUsername()+"', '"+user.getPassword()+"');";
+		
 		try {
-			FileOutputStream fos = new FileOutputStream(file);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(writeString);
-			fos.close();
-			oos.close();
-		} catch (Exception e) {
+			conn.createStatement().executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			log.error(e);
 			return false;
 		}
 		return true;
+//		try {
+//			FileOutputStream fos = new FileOutputStream(file);
+//			ObjectOutputStream oos = new ObjectOutputStream(fos);
+//			oos.writeObject(writeString);
+//			fos.close();
+//			oos.close();
+//		} catch (Exception e) {
+//			log.error(e);
+//			return false;
+//		}
+//		return true;
 	}
 
 	public  String readFromFile(File file) {
@@ -93,5 +113,11 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public boolean loginDao(File file) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

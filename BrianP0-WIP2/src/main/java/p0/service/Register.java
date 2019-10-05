@@ -6,21 +6,26 @@ import p0.pojos.User;
 
 public class Register {
 
-	public static boolean Registration(User user, Input input, DAO dao, FileInfo fileInfo) {
+	public static boolean Registration(User user, Input input, DAO dao) {
 
 		// Set the username and password
 		System.out.println("Enter username:");
 		user.setUsername(input.getUserInput());
-		fileInfo.setFile(".//src//main//resources//accounts//" + user.getUsername() + ".dat");
-		if (dao.fileExists(fileInfo.getFile())) {
-			System.out.println("This user already exists");
-			return false;
-		}
+//		fileInfo.setFile(".//src//main//resources//accounts//" + user.getUsername() + ".dat");
+//		if (dao.fileExists(fileInfo.getFile())) {
+//			System.out.println("This user already exists");
+//			return false;
+//		}
+		
 		System.out.println("Enter password:");
 		user.setPassword(input.getUserInput());
-		if (!dao.createFile(fileInfo.getFile()) || !dao.writeToFile(fileInfo.getFile(), user.getPassword())) {
+		if(!dao.loginDao(user)) {
+			System.out.println("didn't work");
 			return false;
 		}
+//		if (!dao.createFile(fileInfo.getFile()) || !dao.writeToFile(fileInfo.getFile(), user.getPassword())) {
+//			return false;
+//		}
 		System.out.println("Success");
 		return true;
 	}
