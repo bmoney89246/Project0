@@ -5,7 +5,17 @@ create table logincredentials(
 );
 select * from logincredentials;
 
+select username, password from logincredentials where username = 'bmoney' and password = 'password';
+
 insert into logincredentials (username, password) values ('bmoney', 'password');
+
+CREATE SEQUENCE id_seq;
+
+CREATE TABLE logincredentials (
+  id integer NOT NULL DEFAULT nextval('id_seq') PRIMARY KEY,
+  username VARCHAR(255) unique,
+  password VARCHAR(255)
+ );
 
 truncate table logincredentials;
 

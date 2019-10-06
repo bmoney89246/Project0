@@ -11,20 +11,24 @@ import p0.pojos.User;
 public class Customer {
 	private static Logger log = Logger.getRootLogger();
 
-	public static boolean customerMenu(User user, Input input, DAO dao, FileInfo fileInfo) {
+	public static boolean customerMenu(User user, DAO dao) {
 		Car car = new Car();
-		System.out.println("1: View Owned Cars\n2: View Remaining payments\n3: View Car Lot\n4: Make Offer\n5: Logout");
-		input.setCurrentMenu(input.getUserInput());
-		if ("1".equals(input.getCurrentMenu())) {
-			viewOwnedCars(user, input, dao, fileInfo, car);
-		} else if ("2".equals(input.getCurrentMenu())) {
-			viewRemPayments(user, input, dao, fileInfo, car);
-		} else if ("3".equals(input.getCurrentMenu())) {
-			viewLot(user, input, dao, fileInfo, car);
-		} else if ("4".equals(input.getCurrentMenu())) {
-			makeOffer(user, input, dao, fileInfo, car);
-		} else if ("5".equals(input.getCurrentMenu())) {
-			input.setReturnToLogin(true);
+		System.out.println(
+				"1: View Owned Cars\n2: View Remaining payments\n3: View Car Lot\n4: Make Offer\n5: Logout\n6: Exit System");
+		Input.setCurrentMenu(Input.getUserInput());
+		if ("1".equals(Input.getCurrentMenu())) {
+			viewOwnedCars(user, dao);
+		} else if ("2".equals(Input.getCurrentMenu())) {
+			viewRemPayments(user, dao);
+		} else if ("3".equals(Input.getCurrentMenu())) {
+			viewLot(user, car, dao);
+		} else if ("4".equals(Input.getCurrentMenu())) {
+			makeOffer(user, car, dao);
+		} else if ("5".equals(Input.getCurrentMenu())) {
+			Input.setReturnToLogin(true);
+			return false;
+		} else if ("6".equals(Input.getCurrentMenu())) {
+			Input.setExitSystem(true);
 			return false;
 		} else {
 			System.out.println("Invalid command");
@@ -32,82 +36,39 @@ public class Customer {
 		return true;
 	}
 
-	public static boolean makeOffer(User user, Input input, DAO dao, FileInfo fileInfo, Car car) {
-		System.out.println("Enter Vin:");
-		car.setVin(input.getUserInput());
-		fileInfo.setFile(".//src//main/resources//cars//" + car.getVin() + ".dat");
-		if (!dao.fileExists(fileInfo.getFile())) {
-			System.out.println("Car does not exist");
-			return false;
-		}
-		fileInfo.setFile(".//src//main/resources//offers//" + car.getVin() + "-" + user.getUsername() + ".dat");
-		if (dao.fileExists(fileInfo.getFile())) {
-			System.out.println("You already made an offer on this car");
-			return false;
-		} else {
-			System.out.println("Enter Offer:");
-			dao.createFile(fileInfo.getFile());
-			dao.writeToFile(fileInfo.getFile(), input.getUserInput());
-		}
-		System.out.println("Offer successfully made");
-		return true;
-	}
-
-	public static boolean viewLot(User user, Input input, DAO dao, FileInfo fileInfo, Car car) {
-		fileInfo.setFile(".//src//main/resources//cars//");
-		if (fileInfo.getFile().listFiles() != null) {
-			for (File child : fileInfo.getFile().listFiles()) {
-				car.setVin(child.getName());
-				try {
-					System.out.println(Arrays.toString(dao.readFromFile(child).split(" ")));
-				} catch (Exception e) {
-					log.error(e);
-					System.out.println("Error in printing out car lot");
-					return false;
-				}
-			}
-		} else {
-			System.out.println("No cars on lot.");
+	public static boolean makeOffer(User user, Car car, DAO dao) {
+		System.out.println("Enter vin number");
+		car.setVin(Input.getUserInput());
+		System.out.println("Enter payment offer:");
+		car.setPayment(Input.getUserInput());
+		if (!dao.makeOfferDao(user, car)) {
+			System.out.println("Could not find car");
 			return false;
 		}
 		return true;
 	}
 
-	public static boolean viewOwnedCars(User user, Input input, DAO dao, FileInfo fileInfo, Car car) {
-		boolean checkIfFound=false;
-		fileInfo.setFile(".//src//main/resources//accpeted_offers//");
-		if (fileInfo.getFile().listFiles().length != 0) {
-			for (File child : fileInfo.getFile().listFiles()) {
-				if (child.getName().contains(user.getUsername())) {
-					checkIfFound = true;
-					car.setVin(child.getName().replaceAll("-" + user.getUsername(), ""));
-					fileInfo.setFile2(".//src//main/resources//cars//" + car.getVin());
-					dao.readFromFile(fileInfo.getFile2());
-				}
-			}
-		} else {
-			System.out.println("No owned cars found");
+	public static boolean viewLot(User user, Car car, DAO dao) {
+		if (!dao.viewLotDao()) {
+			System.out.println("Could not find cars");
 			return false;
-		}
-		if(!checkIfFound) {
-			System.out.println("No owned cars found");
 		}
 		return true;
 	}
 
-	public static boolean viewRemPayments(User user, Input input, DAO dao, FileInfo fileInfo, Car car) {
-		System.out.println("Vin number:");
-		car.setVin(input.getUserInput());
-		fileInfo.setFile(".//src//main/resources//accpeted_offers//" + car.getVin() + ".dat");
-		if (!dao.fileExists(fileInfo.getFile())) {
-			System.out.println("No owned cars found");
+	public static boolean viewOwnedCars(User user, DAO dao) {
+		if (!dao.viewOwnedCarsDao(user)) {
+			System.out.println("Could not find owned cars");
 			return false;
 		}
-		if ("".equals(dao.readFromFile(fileInfo.getFile()))) {
-			System.out.println("No payment found");
+		return true;
+	}
+
+	public static boolean viewRemPayments(User user, DAO dao) {
+		if (!dao.viewRemPaymentsDao(user)) {
+			System.out.println("Could not find any payments");
 			return false;
 		}
-		System.out.println("For a 5 year period, the current payment is $" + car.getPayment() / 60 + " per month");
 		return true;
 	}
 }

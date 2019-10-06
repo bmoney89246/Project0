@@ -1,32 +1,25 @@
 package p0.service;
 
-import p0.pojos.FileInfo;
 import p0.pojos.Input;
 import p0.pojos.User;
 
 public class Register {
 
-	public static boolean Registration(User user, Input input, DAO dao) {
+	public static boolean Registration(User user, DAO dao) {
 
 		// Set the username and password
-		System.out.println("Enter username:");
-		user.setUsername(input.getUserInput());
-//		fileInfo.setFile(".//src//main//resources//accounts//" + user.getUsername() + ".dat");
-//		if (dao.fileExists(fileInfo.getFile())) {
-//			System.out.println("This user already exists");
-//			return false;
-//		}
-		
-		System.out.println("Enter password:");
-		user.setPassword(input.getUserInput());
-		if(!dao.loginDao(user)) {
-			System.out.println("didn't work");
+		System.out.println("Enter username:\n");
+		user.setUsername(Input.getUserInput());
+		System.out.println("\n");
+		System.out.println("Enter password:\n");
+		user.setPassword(Input.getUserInput());
+		System.out.println("\n");
+		if(!dao.registerDao(user)) {
+			System.out.println("login cedentials already taken. Please try again" + System.lineSeparator());
 			return false;
 		}
-//		if (!dao.createFile(fileInfo.getFile()) || !dao.writeToFile(fileInfo.getFile(), user.getPassword())) {
-//			return false;
-//		}
-		System.out.println("Success");
+
+		System.out.println("Credentials sucessfully created." + System.lineSeparator());
 		return true;
 	}
 }

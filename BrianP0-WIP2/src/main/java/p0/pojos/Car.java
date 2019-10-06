@@ -5,7 +5,7 @@ public class Car {
 	private  String Make;
 	private  String Model;
 	private  String year;
-	private  int payment;
+	private  String payment;
 
 	public  String getVin() {
 		return Vin;
@@ -39,11 +39,11 @@ public class Car {
 		this.year = year;
 	}
 
-	public  int getPayment() {
+	public  String getPayment() {
 		return payment;
 	}
 
-	public  void setPayment(int payment) {
+	public  void setPayment(String payment) {
 		this.payment = payment;
 	}
 }

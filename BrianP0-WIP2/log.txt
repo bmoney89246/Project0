@@ -16,3 +16,65 @@
   Position: 13
 2019-10-04 23:00:36 ERROR root:32 - org.postgresql.util.PSQLException: ERROR: relation "logincredentials" does not exist
   Position: 13
+2019-10-05 11:06:37 ERROR root:32 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "logincredentials_username_key"
+  Detail: Key (username)=(bmoney) already exists.
+2019-10-05 11:08:52 ERROR root:32 - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "logincredentials_username_key"
+  Detail: Key (username)=(bmoney) already exists.
+2019-10-05 16:27:45 ERROR root:98 - org.postgresql.util.PSQLException: ERROR: column "year" is of type integer but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 62
+2019-10-05 16:59:11 ERROR root:158 - org.postgresql.util.PSQLException: ERROR: syntax error at or near "where"
+  Position: 53
+2019-10-05 18:36:21 TRACE root:70 - User logged in
+2019-10-05 18:37:00 TRACE root:70 - User logged in
+2019-10-05 18:37:12 TRACE root:103 - Car added to lot
+2019-10-05 18:37:42 TRACE root:70 - User logged in
+2019-10-05 18:37:53 TRACE root:158 - Offer made
+2019-10-05 18:38:12 TRACE root:70 - User logged in
+2019-10-05 18:39:47 TRACE root:70 - User logged in
+2019-10-05 18:44:46 TRACE root:70 - User logged in
+2019-10-05 18:45:33 TRACE root:70 - User logged in
+2019-10-05 18:46:16 TRACE root:70 - User logged in
+2019-10-05 18:46:41 TRACE root:178 - User logged in
+2019-10-05 18:49:06 TRACE root:70 - User logged in
+2019-10-05 18:49:10 TRACE root:178 - org.postgresql.jdbc.PgResultSet@696da30b records found.
+2019-10-05 18:51:20 TRACE root:70 - User logged in
+2019-10-05 18:52:11 ERROR root:136 - org.postgresql.util.PSQLException: ERROR: operator does not exist: integer = character varying
+  Hint: No operator matches the given name and argument types. You might need to add explicit type casts.
+  Position: 100
+2019-10-05 18:53:46 TRACE root:70 - User logged in
+2019-10-05 18:54:45 TRACE root:139 - Offer accepted
+2019-10-05 18:55:03 ERROR root:175 - org.postgresql.util.PSQLException: Bad value for type int : car1
+2019-10-05 18:56:01 TRACE root:70 - User logged in
+2019-10-05 18:56:05 ERROR root:175 - org.postgresql.util.PSQLException: Bad value for type int : car1
+2019-10-05 18:57:05 TRACE root:70 - User logged in
+2019-10-05 18:57:14 ERROR root:175 - org.postgresql.util.PSQLException: Bad value for type int : car1
+2019-10-05 18:58:37 TRACE root:70 - User logged in
+2019-10-05 19:00:31 TRACE root:70 - User logged in
+2019-10-05 19:00:46 TRACE root:178 - org.postgresql.jdbc.PgResultSet@696da30b records found.
+2019-10-05 19:02:49 TRACE root:70 - User logged in
+2019-10-05 19:02:52 TRACE root:174 - 0 records found.
+2019-10-05 19:05:49 TRACE root:70 - User logged in
+2019-10-05 19:05:51 TRACE root:174 - 0 records found.
+2019-10-05 19:07:33 TRACE root:70 - User logged in
+2019-10-05 19:07:38 TRACE root:175 - 1 records found.
+2019-10-05 19:52:21 TRACE root:70 - User logged in
+2019-10-05 20:54:20 TRACE root:70 - User logged in
+2019-10-05 20:54:27 ERROR root:197 - org.postgresql.util.PSQLException: ERROR: syntax error at or near "year"
+  Position: 25
+2019-10-05 20:54:50 ERROR root:197 - org.postgresql.util.PSQLException: ERROR: syntax error at or near "year"
+  Position: 25
+2019-10-05 20:56:05 TRACE root:70 - User logged in
+2019-10-05 20:56:14 TRACE root:70 - User logged in
+2019-10-05 20:56:19 TRACE root:195 - 1 record(s) found.
+2019-10-05 20:56:36 TRACE root:70 - User logged in
+2019-10-05 21:04:02 TRACE root:64 - User logged in
+2019-10-05 21:04:20 TRACE root:211 - 1 record(s) found.
+2019-10-05 21:16:17 TRACE root:64 - User logged in
+2019-10-05 21:16:28 ERROR root:235 - org.postgresql.util.PSQLException: The column index is out of range: 6, number of columns: 5.
+2019-10-05 21:17:03 TRACE root:64 - User logged in
+2019-10-05 21:17:08 TRACE root:233 - 1 record(s) found.
+2019-10-05 21:17:15 TRACE root:211 - 1 record(s) found.
+2019-10-05 21:17:21 TRACE root:189 - 1 record(s) found.
+2019-10-05 21:19:15 TRACE root:64 - User logged in
+2019-10-05 21:19:19 TRACE root:189 - 0 record(s) found.
