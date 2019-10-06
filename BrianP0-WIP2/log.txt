@@ -78,3 +78,8 @@
 2019-10-05 21:17:21 TRACE root:189 - 1 record(s) found.
 2019-10-05 21:19:15 TRACE root:64 - User logged in
 2019-10-05 21:19:19 TRACE root:189 - 0 record(s) found.
+2019-10-06 11:23:39 TRACE root:97 - Car added to lot
+2019-10-06 13:10:40 TRACE root:64 - User logged in
+2019-10-06 13:10:46 TRACE root:169 - 1 record(s) found.
+2019-10-06 13:31:49 TRACE root:64 - User logged in
+2019-10-06 13:32:06 TRACE root:97 - Car added to lot
