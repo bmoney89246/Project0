@@ -37,6 +37,7 @@ public class DAO implements DAOpersistable {
 				return false;
 			}
 			log.trace("User registered");
+			System.out.println(System.lineSeparator());
 			return true;
 		} else {
 			return false;
@@ -62,6 +63,7 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("User logged in");
+		System.out.println(System.lineSeparator());
 		return true;
 	}
 
@@ -95,6 +97,7 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("Car added to lot");
+		System.out.println(System.lineSeparator());
 		return true;
 	}
 	
@@ -113,6 +116,7 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("Car removed");
+		System.out.println(System.lineSeparator());
 		return true;
 	}
 	
@@ -131,6 +135,7 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("Offer accepted");
+		System.out.println(System.lineSeparator());
 		return true;
 	}
 	
@@ -150,6 +155,7 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("Offer made");
+		System.out.println(System.lineSeparator());
 		return true;
 	}
 	
@@ -167,6 +173,7 @@ public class DAO implements DAOpersistable {
 				counter++;
 			}
 			log.trace(counter + " record(s) found.");
+			System.out.println(System.lineSeparator());
 		} catch (SQLException e) {
 			log.error(e);
 			return false;
@@ -174,7 +181,7 @@ public class DAO implements DAOpersistable {
 		return true;
 	}
 	public boolean viewLotDao() {
-		String sql = "select c.vin, c.make, c.model, c.year from carlot c inner join offers o on c.c_id = o.c_id where o.accepted = FALSE";
+		String sql = "select c.vin, c.make, c.model, c.year from carlot c left join offers o on c.c_id = o.c_id where o.accepted = FALSE or o.accepted is null";
 		ResultSet rs;
 		PreparedStatement stmt;
 
@@ -187,6 +194,7 @@ public class DAO implements DAOpersistable {
 				counter++;
 			}
 			log.trace(counter + " record(s) found.");
+			System.out.println(System.lineSeparator());
 		} catch (SQLException e) {
 			log.error(e);
 			return false;
@@ -209,6 +217,7 @@ public class DAO implements DAOpersistable {
 				counter++;
 			}
 			log.trace(counter + " record(s) found.");
+			System.out.println(System.lineSeparator());
 		} catch (SQLException e) {
 			log.error(e);
 			return false;
@@ -231,6 +240,7 @@ public class DAO implements DAOpersistable {
 				counter++;
 			}
 			log.trace(counter + " record(s) found.");
+			System.out.println(System.lineSeparator());
 		} catch (SQLException e) {
 			log.error(e);
 			return false;

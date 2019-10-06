@@ -50,7 +50,7 @@ public class TheSystem {
 	}
 
 	public static User CustomerOrEmployee(User user) {
-		System.out.println("1: Customer:" + System.lineSeparator() + "Employee" + System.lineSeparator());
+		System.out.println("1: Customer:" + System.lineSeparator() + "2: Employee" + System.lineSeparator());
 		user.setCustomerOrEmployeeChoice(Input.getUserInput());
 		return user;
 	}

@@ -1,15 +1,10 @@
 package p0.service;
 
-import java.io.File;
-import java.util.Arrays;
-import org.apache.log4j.Logger;
 import p0.pojos.Car;
-import p0.pojos.FileInfo;
 import p0.pojos.Input;
 import p0.pojos.User;
 
 public class Customer {
-	private static Logger log = Logger.getRootLogger();
 
 	public static boolean customerMenu(User user, DAO dao) {
 		Car car = new Car();

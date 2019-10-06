@@ -1,7 +1,6 @@
 package p0.service;
 
 import p0.pojos.Car;
-import p0.pojos.FileInfo;
 import p0.pojos.Input;
 import p0.pojos.User;
 
