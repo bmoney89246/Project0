@@ -6,11 +6,11 @@ import p0.pojos.User;
 
 public class Customer {
 
-	public static boolean customerMenu(User user, DAO dao) {
+	public static boolean customerMenu(User user, DAO dao, Input input) {
 		Car car = new Car();
 		System.out.println(
 				"1: View Owned Cars\n2: View Remaining payments\n3: View Car Lot\n4: Make Offer\n5: Logout\n6: Exit System");
-		Input.setCurrentMenu(Input.getUserInput());
+		Input.setCurrentMenu(input.getUserInput());
 		if ("1".equals(Input.getCurrentMenu())) {
 			viewOwnedCars(user, dao);
 		} else if ("2".equals(Input.getCurrentMenu())) {
@@ -18,7 +18,7 @@ public class Customer {
 		} else if ("3".equals(Input.getCurrentMenu())) {
 			viewLot(user, car, dao);
 		} else if ("4".equals(Input.getCurrentMenu())) {
-			makeOffer(user, car, dao);
+			makeOffer(user, car, dao, input);
 		} else if ("5".equals(Input.getCurrentMenu())) {
 			Input.setReturnToLogin(true);
 			return false;
@@ -31,11 +31,11 @@ public class Customer {
 		return true;
 	}
 
-	public static boolean makeOffer(User user, Car car, DAO dao) {
+	public static boolean makeOffer(User user, Car car, DAO dao, Input input) {
 		System.out.println("Enter vin number");
-		car.setVin(Input.getUserInput());
+		car.setVin(input.getUserInput());
 		System.out.println("Enter payment offer:");
-		car.setPayment(Input.getUserInput());
+		car.setPayment(input.getUserInput());
 		if (!dao.makeOfferDao(user, car)) {
 			System.out.println("Could not find car");
 			return false;

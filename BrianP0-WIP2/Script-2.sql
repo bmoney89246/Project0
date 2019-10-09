@@ -47,16 +47,17 @@ select * from Invoice where total between 15 and 20;
 select * from employee where hiredate between '2003-6-1' and '2004-3-1';
 
 --Question 2.7.1
-alter table invoice
-	drop constraint fk_invoicecustomerid,
-	add constraint fk_invoicecustomerid
-	foreign key (customerid) references customer(customerid) on delete cascade;
+select * from invoice;
+alter table invoice drop constraint fk_invoicecustomerid;
+delete from customer where firstname = 'Robert' and lastname = 'Walter';
+	--,add constraint fk_invoicecustomerid
+	--foreign key (customerid) references customer(customerid) on delete cascade;
 
 --Question 2.7.2
-alter table invoiceline
-	drop constraint fk_invoicelineinvoiceid,
-	add constraint fk_invoicelineinvoiceid
-	foreign key (invoiceid) references invoice(invoiceid) on delete cascade;
+--alter table invoiceline
+	--drop constraint fk_invoicelineinvoiceid,
+	--add constraint fk_invoicelineinvoiceid
+	--foreign key (invoiceid) references invoice(invoiceid) on delete cascade;
 
 --Question 2.7.3
 delete from customer
@@ -97,7 +98,16 @@ as $$
 update employee set email = newEmail, employeeid = id where email = oldEmail; 
 $$;
 
-call updatePersonalInfo('ssoqp', 'robert@chinookcorp.com', 9);
+call updatePersonalInfo('ssoqp', 'robert@chinookcorp.com', 11);
+
+--Quesiton 4.2.2
+Create or replace procedure selectManagersOfEmployees (newEmployeeId integer)
+language sql
+as $$
+returns select m.firstname, m.lastname from employee e inner join employee m on e.employeeid = m.reportsto;
+$$;
+
+call selectManagersOfEmployees(5);
 
 --Question 4.3.1
 CREATE OR REPLACE function name_company () 
@@ -130,7 +140,7 @@ language plpgsql
 as $$ 
 begin
 	insert into customer values
-	(999, 'Ricky', 'Wang', 'Revature', '12706 Bruce B Downs Blvd', 'Tampa', 'Florida', 'USA', '33061', '911', '911', 'random@gmail.com', 1);
+	(998, 'Ricky', 'Wang', 'Revature', '12706 Bruce B Downs Blvd', 'Tampa', 'Florida', 'USA', '33061', '911', '911', 'random@gmail.com', 1);
 end
 $$;
 

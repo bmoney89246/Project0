@@ -8,26 +8,26 @@ public class TheSystem {
 	public static void main(String args[]) {
 		User user = new User();
 		DAO dao = new DAO();
+		Input input = new Input();
 		while (true) {
-			// Registration check and initial login
 			while (true) {
-				LoginOrRegister(user);
+				LoginOrRegister(user, input);
 				if ("1".equals(user.getLoginOrRegisterChoice())) {
-					if (Login.tryLogin(user, dao)) {
+					if (Login.tryLogin(user, dao, input)) {
 						break;
 					}
 				} else if ("2".equals(user.getLoginOrRegisterChoice())) {
-					Register.Registration(user, dao);
+					Register.Registration(user, dao, input);
 				} else {
 					System.out.println("Invalid input. Please try again\n");
 				}
 			}
-			CustomerOrEmployee(user);
+			CustomerOrEmployee(user, input);
 			while (true) {
 				if ("1".equals(user.getCustomerOrEmployeeChoice())) {
-					Customer.customerMenu(user, dao);
+					Customer.customerMenu(user, dao, input);
 				} else if ("2".equals(user.getCustomerOrEmployeeChoice())) {
-					Employee.employeeMenu(user, dao);
+					Employee.employeeMenu(user, dao, input);
 				} else {
 					System.out.println("Invalid input. Please try again\n");
 				}
@@ -43,15 +43,15 @@ public class TheSystem {
 		}
 	}
 
-	public static User LoginOrRegister(User user) {
+	public static User LoginOrRegister(User user, Input input) {
 		System.out.println("1: Login" + System.lineSeparator() + "2: Register" + System.lineSeparator());
-		user.setLoginOrRegisterChoice(Input.getUserInput());
+		user.setLoginOrRegisterChoice(input.getUserInput());
 		return user;
 	}
 
-	public static User CustomerOrEmployee(User user) {
+	public static User CustomerOrEmployee(User user, Input input) {
 		System.out.println("1: Customer:" + System.lineSeparator() + "2: Employee" + System.lineSeparator());
-		user.setCustomerOrEmployeeChoice(Input.getUserInput());
+		user.setCustomerOrEmployeeChoice(input.getUserInput());
 		return user;
 	}
 }

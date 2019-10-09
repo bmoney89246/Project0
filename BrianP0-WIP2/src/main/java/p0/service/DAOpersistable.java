@@ -12,7 +12,9 @@ public interface DAOpersistable {
 
 	public boolean removeCarDao(Car car);
 
-	public boolean acceptOfferDao(Car car);
+	public boolean acceptOfferDao(User user, Car car);
+	
+	public boolean rejectOfferDao(User user, Car car);
 
 	public boolean makeOfferDao(User user, Car car);
 

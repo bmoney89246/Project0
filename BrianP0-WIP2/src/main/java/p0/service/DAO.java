@@ -120,14 +120,15 @@ public class DAO implements DAOpersistable {
 		return true;
 	}
 	
-	public boolean acceptOfferDao(Car car) {
-		String sql ="update offers set accepted = TRUE where c_id = (select c_id from carlot where vin = ?) and amount = ?";
+	public boolean acceptOfferDao(User user, Car car) {
+		String sql ="update offers set accepted = TRUE where c_id = (select c_id from carlot where vin = ?) and amount = ? and username = ?";
 		PreparedStatement stmt;
 
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, car.getVin());
 			stmt.setInt(2, Integer.parseInt(car.getPayment()));
+			stmt.setString(3, user.getUsername());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -135,6 +136,26 @@ public class DAO implements DAOpersistable {
 			return false;
 		}
 		log.trace("Offer accepted");
+		System.out.println(System.lineSeparator());
+		return true;
+	}
+	
+	public boolean rejectOfferDao(User user, Car car) {
+		String sql = "delete from offers where c_id = (select c_id from carlot where vin = ?) and amount = ? and username = ?";
+		PreparedStatement stmt;
+
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, car.getVin());
+			stmt.setInt(2, Integer.parseInt(car.getPayment()));
+			stmt.setString(3, user.getUsername());
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			log.error(e);
+			return false;
+		}
+		log.trace("Offer rejected");
 		System.out.println(System.lineSeparator());
 		return true;
 	}

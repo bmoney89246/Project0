@@ -5,14 +5,14 @@ import p0.pojos.User;
 
 public class Register {
 
-	public static boolean Registration(User user, DAO dao) {
+	public static boolean Registration(User user, DAO dao, Input input) {
 
 		// Set the username and password
 		System.out.println("Enter username:\n");
-		user.setUsername(Input.getUserInput());
+		user.setUsername(input.getUserInput());
 		System.out.println("\n");
 		System.out.println("Enter password:\n");
-		user.setPassword(Input.getUserInput());
+		user.setPassword(input.getUserInput());
 		System.out.println("\n");
 		if(!dao.registerDao(user)) {
 			System.out.println("login cedentials already taken. Please try again" + System.lineSeparator());

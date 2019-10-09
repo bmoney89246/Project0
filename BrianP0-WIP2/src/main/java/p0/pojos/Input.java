@@ -8,9 +8,9 @@ public class Input {
 	private static String currentMenu;
 	private static boolean exitSystem;
 
-	public static String getUserInput() {
-		return in.nextLine();
-		//return input;
+	public String getUserInput() {
+		String input = in.nextLine();
+		return input;
 	}
 
 	public void SetScanner(Scanner in) {

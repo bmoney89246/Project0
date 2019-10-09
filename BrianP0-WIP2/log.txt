@@ -106,3 +106,71 @@
 2019-10-06 14:31:14 TRACE root:196 - 0 record(s) found.
 2019-10-06 14:34:08 TRACE root:65 - User logged in
 2019-10-06 14:34:13 TRACE root:196 - 2 record(s) found.
+2019-10-07 15:25:31 TRACE root:65 - User logged in
+2019-10-07 15:25:36 TRACE root:196 - 2 record(s) found.
+2019-10-07 20:06:19 TRACE root:118 - Car removed
+2019-10-07 20:06:32 TRACE root:118 - Car removed
+2019-10-07 20:07:52 TRACE root:118 - Car removed
+2019-10-07 20:08:59 TRACE root:118 - Car removed
+2019-10-07 20:09:17 TRACE root:118 - Car removed
+2019-10-07 20:41:09 TRACE root:65 - User logged in
+2019-10-07 20:41:20 TRACE root:215 - 2 record(s) found.
+2019-10-07 20:41:44 TRACE root:176 - Offer made
+2019-10-07 20:42:00 TRACE root:176 - Offer made
+2019-10-07 20:53:14 TRACE root:65 - User logged in
+2019-10-07 20:53:48 TRACE root:159 - Offer rejected
+2019-10-07 20:55:52 TRACE root:65 - User logged in
+2019-10-07 20:56:16 TRACE root:138 - Offer accepted
+2019-10-08 08:48:38 TRACE root:99 - Car added to lot
+2019-10-08 09:04:58 TRACE root:118 - Car removed
+2019-10-08 09:09:54 TRACE root:99 - Car added to lot
+2019-10-08 09:10:31 TRACE root:118 - Car removed
+2019-10-08 09:26:55 TRACE root:65 - User logged in
+2019-10-08 09:32:59 TRACE root:99 - Car added to lot
+2019-10-08 09:51:31 ERROR root:115 - org.postgresql.util.PSQLException: No value specified for parameter 2.
+2019-10-08 09:57:00 ERROR root:115 - org.postgresql.util.PSQLException: No value specified for parameter 2.
+2019-10-08 10:06:32 TRACE root:118 - Car removed
+2019-10-08 12:59:29 TRACE root:197 - 2 record(s) found.
+2019-10-08 19:10:13 TRACE root:218 - 1 record(s) found.
+2019-10-08 19:18:35 TRACE root:99 - Car added to lot
+2019-10-08 19:19:29 TRACE root:218 - 2 record(s) found.
+2019-10-08 19:23:33 TRACE root:179 - Offer made
+2019-10-08 19:27:50 TRACE root:138 - Offer accepted
+2019-10-08 19:29:18 TRACE root:218 - 1 record(s) found.
+2019-10-08 19:30:02 TRACE root:197 - 3 record(s) found.
+2019-10-08 19:32:43 TRACE root:241 - 1 record(s) found.
+2019-10-08 19:33:40 TRACE root:264 - 1 record(s) found.
+2019-10-08 19:36:20 TRACE root:158 - Offer rejected
+2019-10-08 19:37:10 TRACE root:118 - Car removed
+2019-10-08 19:39:14 TRACE root:99 - Car added to lot
+2019-10-08 19:39:19 TRACE root:240 - 0 record(s) found.
+2019-10-08 19:39:27 TRACE root:196 - 2 record(s) found.
+2019-10-08 19:39:32 TRACE root:138 - Offer accepted
+2019-10-08 19:39:41 TRACE root:178 - Offer made
+2019-10-08 19:41:28 TRACE root:158 - Offer rejected
+2019-10-08 19:41:41 TRACE root:118 - Car removed
+2019-10-08 19:50:30 TRACE root:99 - Car added to lot
+2019-10-08 19:51:08 TRACE root:118 - Car removed
+2019-10-08 19:52:59 TRACE root:65 - User logged in
+2019-10-08 19:53:20 TRACE root:240 - 2 record(s) found.
+2019-10-08 19:53:48 TRACE root:263 - 2 record(s) found.
+2019-10-08 19:54:03 TRACE root:217 - 1 record(s) found.
+2019-10-08 19:54:25 TRACE root:178 - Offer made
+2019-10-08 19:55:08 TRACE root:65 - User logged in
+2019-10-08 19:55:48 TRACE root:99 - Car added to lot
+2019-10-08 19:57:36 TRACE root:158 - Offer rejected
+2019-10-08 19:58:42 TRACE root:158 - Offer rejected
+2019-10-08 19:59:12 TRACE root:158 - Offer rejected
+2019-10-08 19:59:45 TRACE root:138 - Offer accepted
+2019-10-08 19:59:51 TRACE root:196 - 0 record(s) found.
+2019-10-08 20:00:07 TRACE root:196 - 0 record(s) found.
+2019-10-08 20:01:55 TRACE root:138 - Offer accepted
+2019-10-08 20:01:58 TRACE root:196 - 1 record(s) found.
+2019-10-08 20:03:14 TRACE root:158 - Offer rejected
+2019-10-08 20:03:20 TRACE root:196 - 0 record(s) found.
+2019-10-08 20:03:31 TRACE root:65 - User logged in
+2019-10-08 20:03:35 TRACE root:240 - 0 record(s) found.
+2019-10-08 20:03:41 TRACE root:263 - 0 record(s) found.
+2019-10-08 20:03:43 TRACE root:217 - 4 record(s) found.
+2019-10-08 20:06:11 TRACE root:65 - User logged in
+2019-10-08 20:06:17 TRACE root:217 - 4 record(s) found.
