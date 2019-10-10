@@ -27,6 +27,7 @@ import p0.service.Employee;
 import p0.service.Login;
 import p0.service.Register;
 import p0.service.TheSystem;
+import p0.util.CallableDriver;
 import p0.util.ConnectionFactory;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -108,6 +109,8 @@ public class P0JunitTesting {
 
 	@Test
 	public void LoginOrRegisterTest() {
+		CallableDriver cd = new CallableDriver();
+		cd.deleteTestCredentials();
 		User user = new User();
 		when(input.getUserInput()).thenReturn("1");
 		TheSystem.LoginOrRegister(user, input);
@@ -363,7 +366,7 @@ public class P0JunitTesting {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public P0JunitTesting() throws SQLException {
 		super();
 	}
