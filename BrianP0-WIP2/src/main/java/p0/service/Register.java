@@ -15,7 +15,7 @@ public class Register {
 		user.setPassword(input.getUserInput());
 		System.out.println("\n");
 		if(!dao.registerDao(user)) {
-			System.out.println("login cedentials already taken. Please try again" + System.lineSeparator());
+			System.out.println("login credentials already taken. Please try again" + System.lineSeparator());
 			return false;
 		}
 

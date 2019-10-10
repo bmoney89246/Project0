@@ -174,3 +174,33 @@
 2019-10-08 20:03:43 TRACE root:217 - 4 record(s) found.
 2019-10-08 20:06:11 TRACE root:65 - User logged in
 2019-10-08 20:06:17 TRACE root:217 - 4 record(s) found.
+2019-10-08 20:36:34 TRACE root:65 - User logged in
+2019-10-08 20:37:03 TRACE root:217 - 4 record(s) found.
+2019-10-08 20:37:42 TRACE root:178 - Offer made
+2019-10-08 20:37:56 TRACE root:65 - User logged in
+2019-10-08 20:38:31 TRACE root:138 - Offer accepted
+2019-10-08 20:38:37 TRACE root:196 - 1 record(s) found.
+2019-10-08 20:43:40 TRACE root:65 - User logged in
+2019-10-08 20:43:43 TRACE root:240 - 1 record(s) found.
+2019-10-08 20:43:51 TRACE root:263 - 1 record(s) found.
+2019-10-08 20:44:00 TRACE root:217 - 3 record(s) found.
+2019-10-08 20:44:19 TRACE root:65 - User logged in
+2019-10-08 20:44:37 TRACE root:158 - Offer rejected
+2019-10-09 08:36:45 TRACE root:65 - User logged in
+2019-10-09 08:36:52 TRACE root:217 - 4 record(s) found.
+2019-10-09 08:37:05 TRACE root:65 - User logged in
+2019-10-09 08:37:16 TRACE root:196 - 0 record(s) found.
+2019-10-09 12:48:54 TRACE root:65 - User logged in
+2019-10-09 12:51:18 TRACE root:65 - User logged in
+2019-10-09 12:51:26 TRACE root:240 - 0 record(s) found.
+2019-10-09 12:51:31 TRACE root:263 - 0 record(s) found.
+2019-10-09 12:51:36 TRACE root:217 - 4 record(s) found.
+2019-10-09 13:20:08 TRACE root:65 - User logged in
+2019-10-09 13:20:27 TRACE root:217 - 4 record(s) found.
+2019-10-09 13:21:01 TRACE root:178 - Offer made
+2019-10-09 13:21:13 TRACE root:65 - User logged in
+2019-10-09 13:21:41 TRACE root:138 - Offer accepted
+2019-10-09 13:22:04 TRACE root:65 - User logged in
+2019-10-09 13:22:07 TRACE root:240 - 1 record(s) found.
+2019-10-09 13:22:13 TRACE root:263 - 1 record(s) found.
+2019-10-09 13:22:15 TRACE root:217 - 3 record(s) found.

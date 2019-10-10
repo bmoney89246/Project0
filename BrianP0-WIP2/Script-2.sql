@@ -64,23 +64,65 @@ delete from customer
 where firstname = 'Robert' and lastname = 'Walter';
 
 --Question 3.1.1
-select current_time;
+create or replace function currentTime()
+returns text as $$
+begin
+    return current_time;
+end;
+$$ language plpgsql;
+
+select currentTime();
 
 --Question 3.1.2
-select count(*) from mediatype;
+create or replace function mediatypeLength(idinput int)
+returns int as $$
+begin
+	return (select length(name) from mediatype where mediatypeid = idinput);
+ end;
+$$ language plpgsql;
+
+select mediatypeLength(1);
 
 --Question 3.2.1
-select avg(total) from invoice;
+create or replace function averageTotal()
+returns float as $$
+begin
+	return avg(total) from invoice;
+ end;
+$$ language plpgsql;
+
+select averageTotal();
 
 --Question 3.2.2
-select trackid, name from track
-where unitprice = (select MAX(unitprice) from track);
+create or replace function mostExpensiveTrack()
+returns text as $$
+begin
+	return (select name from track where unitprice = (select max(unitprice) from track));
+ end;
+$$ language plpgsql;
+
+select mostExpensiveTrack();
 
 --Question 3.3.1
-select avg(unitprice) from invoiceline;
+create or replace function averageInvoicePrice()
+returns float as $$
+begin
+	return (select avg(unitprice) from invoiceline);
+ end;
+$$ language plpgsql;
+
+select averageInvoicePrice();
 
 --Question 3.4.1
-select employeeid from employee where birthdate > to_date('1968-01-01','YYYY-MM-DD');
+create or replace
+	function old_employees()
+	returns text[][] as $$
+	begin
+		return (select array(select array [firstname, lastname] from employee where birthdate > '1968-1-1'));
+	end
+	$$ language plpgsql;
+
+select old_employeees();
 
 --Question 4.1.1
 create procedure selectAllEmployeeNames ()
@@ -130,9 +172,21 @@ LANGUAGE 'plpgsql';
 select * from name_company();
 
 --Question 5.1.1
-begin;
-delete from invoice where invoiceid = 3;
-rollback;
+create or replace function deleteInvoice(invoice_id_input int)
+returns void as $$
+begin
+	delete from invoice where invoiceid = invoice_id_input;
+end;
+$$ language plpgsql;
+
+alter table invoiceline
+drop constraint fk_invoicelineinvoiceid;
+
+alter table invoiceline
+add constraint fk_invoicelineinvoiceid
+foreign key (invoiceid) references invoice (invoiceid) on delete cascade on update cascade;
+
+select deleteInvoice(407);
 
 --Question 5.1.2
 create or replace procedure insertcustomer()
