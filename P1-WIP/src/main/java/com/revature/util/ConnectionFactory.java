@@ -15,8 +15,18 @@ public class ConnectionFactory {
 	private static String user;
 
 	private static String password;
+	
+	static{
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
-	private static final String PROPERTIES_FILE = "src/main/resources/database.properties";
+	//private static final String PROPERTIES_FILE = "src/main/resources/database.properties";
+	//private static final String PROPERTIES_FILE = "database.properties";
+	private static final String PROPERTIES_FILE = "C:\\Totally Not a Revature Repository\\P1-WIP\\src\\main\\webapp\\WEB-INF\\database.properties";
 
 	private static ConnectionFactory cf;
 

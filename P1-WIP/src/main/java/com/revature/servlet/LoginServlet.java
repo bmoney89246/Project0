@@ -57,16 +57,8 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				response.sendRedirect("emp");
 			}
-			// response.getWriter().write("Welcome to your homepage" + user.getFullName());
-			UserDaoFake udf = new UserDaoFake();
-			if (udf.loginDao(user)) {
-				// success
-			} else {
-				// invalid credentials
-			}
-
 		} else {
-			response.getWriter().write("Invalid login credentials");
+			response.getWriter().write("Sorry, but you were not able to login correctly :(");
 		}
 	}
 

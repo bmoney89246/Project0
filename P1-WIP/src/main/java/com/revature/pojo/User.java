@@ -73,6 +73,10 @@ public class User {
 		this.fullName = fullName;
 	}
 
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", fullName=" + fullName + "]";

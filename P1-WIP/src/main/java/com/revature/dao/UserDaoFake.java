@@ -19,8 +19,11 @@ public class UserDaoFake implements UserDao {
 
 	private static Logger log = Logger.getRootLogger();
 
-	public boolean loginDao(User user) {
-		
+	@Override
+	public User getUser(String username, String password) {
+		User user = new User();
+		user.setPassword(password);
+		user.setUsername(username);
 		String sql = "select username, password from logincredentials where username = ? and password = ?";
 
 		PreparedStatement stmt;
@@ -32,49 +35,15 @@ public class UserDaoFake implements UserDao {
 			ResultSet rs = stmt.executeQuery();
 
 			if (!rs.next()) {
-				return false;
+				return null;
 			}
 		} catch (SQLException e) {
 			log.error(e);
-			return false;
+			return null;
 		}
 		log.trace("User logged in");
 		System.out.println(System.lineSeparator());
-		return true;
-	}
-//	List<User> userRepository;
-//	
-//	{
-//		userRepository = new ArrayList<User>();
-//		
-//		userRepository.add(new User("user@gmail.com", "pass", "MyUser"));
-//		userRepository.add(new User("brian.money92@yahoo.com", "password", "Brian M"));
-//	}
-
-	public void createUser(User user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public User getUser(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return user;
 	}
 
 }

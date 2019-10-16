@@ -10,8 +10,10 @@ public class UserServiceImpl implements UserService {
 	
 	public User loginUser(String username, String password) {
 		System.out.println("Attempted login with credentials: Username - " + username + " Password - " + password); //Use log 4 j
-		User user = userDao.getUser(username);
-		if( user != null && user.getPassword().contentEquals(password)) {
+		
+		User user = userDao.getUser(username, password);
+		
+		if ((user != null) && (user.getPassword().equals(password))) {
 			return user;
 		}
 		return null;
