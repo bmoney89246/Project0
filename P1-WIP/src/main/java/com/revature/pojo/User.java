@@ -1,15 +1,15 @@
 package com.revature.pojo;
 
 public class User {
-	String username;
-	String password;
-	String fullName;
-
-	public String getUsername() {
+	private String username;
+	private String password;
+	private String fullName;
+	private String managerStatus;
+	public String getEmail() {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setEmail(String username) {
 		this.username = username;
 	}
 
@@ -27,6 +27,14 @@ public class User {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+	
+	public String getManagerStatus() {
+		return managerStatus;
+	}
+
+	public void setManagerStatus(String managerStatus) {
+		this.managerStatus = managerStatus;
 	}
 
 	@Override
@@ -70,7 +78,7 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
-		this.fullName = fullName;
+		this.fullName = fullName; 
 	}
 
 	public User() {

@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pojo.User;
 
-public class HomeServlet extends HttpServlet{
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
+public class HomeServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String name = ((User)(req.getSession().getAttribute("user"))).getFullName();
 		String message = getServletContext().getInitParameter("message");
-		String role = getServletContext().getInitParameter("role");
+		String role = getServletConfig().getInitParameter("role");
 		resp.getWriter().write(message + " " + role + " " + name);
 	}
+
 }

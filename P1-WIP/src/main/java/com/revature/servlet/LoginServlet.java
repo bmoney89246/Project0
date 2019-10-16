@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.revature.dao.UserDaoFake;
+import com.revature.dao.UserDaoLogin;
 import com.revature.pojo.User;
 import com.revature.service.UserService;
 import com.revature.service.UserServiceImpl;
@@ -51,11 +51,18 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		User user = userService.loginUser(username, password);
 		if (user != null) {
-			request.getSession().setAttribute("user", user);
-			if (user.getUsername().equals("user")) {
-				response.sendRedirect("man");
+			request.getSession().setAttribute("email", user.getEmail());
+			request.getSession().setAttribute("pass", user.getPassword());
+			if (user.getManagerStatus().equals("employee")) {
+				response.sendRedirect("employee");
+			} else if(user.getManagerStatus().equals("supervisor")){
+				response.sendRedirect("manager");
+			} else if(user.getManagerStatus().equals("departmentHead")){
+				response.sendRedirect("departmentHead");
+			} else if(user.getManagerStatus().equals("benco")){
+					response.sendRedirect("benco");
 			} else {
-				response.sendRedirect("emp");
+				System.out.println("Couldn't find where to redirect you.");
 			}
 		} else {
 			response.getWriter().write("Sorry, but you were not able to login correctly :(");
